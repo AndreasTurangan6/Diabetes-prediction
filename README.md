@@ -2,12 +2,16 @@
 
 ## Prediksi Diabetes (Kesehatan)
 
-Karena jumlah penderita diabetes mellitus yang terus meningkat setiap tahunnya, diabetes mellitus adalah salah satu penyakit kronis yang menjadi perhatian global. [World Health Organization (WHO)](https://www.who.int/health-topics/diabetes#tab=tab_1) melaporkan bahwa prevalensi diabetes telah meningkat secara global. Perubahan gaya hidup modern diperkirakan akan menyebabkan peningkatan ini terus berlanjut. Penyakit ini tidak hanya memengaruhi kualitas hidup penderita, tetapi juga menimbulkan tantangan yang signifikan bagi sistem kesehatan, terutama jika tidak ditemukan sejak awal. Salah satu masalah utama dalam pengobatan diabetes adalah diagnosis yang terlambat. Banyak penderita diabetes baru mengetahui bahwa mereka memiliki komplikasi serius. Akibatnya, sangat penting untuk mendeteksi diabetes sejak dini. 
-Metode pembelajaran mesin telah banyak digunakan untuk prediksi penyakit, termasuk diabetes, berkat kemajuan teknologi, khususnya AI. Sistem dapat mengenali pola yang sulit dilihat oleh manusia dan membuat prediksi yang cukup akurat dengan menggunakan data historis pasien dan algoritma pembelajaran mesin.
+Karena jumlah penderita diabetes mellitus yang terus meningkat setiap tahunnya, diabetes mellitus adalah salah satu penyakit kronis yang menjadi perhatian global. [World Health Organization (WHO)](https://www.who.int/health-topics/diabetes#tab=tab_1) melaporkan bahwa prevalensi diabetes telah meningkat secara global. Menurut data dari [International Diabetes Federation (IDF)](https://diabetesatlas.org/), pada tahun 2021 tercatat bahwa 1 dari 10 orang dewasa hidup dengan diabetes, dan diperkirakan angka ini akan meningkat menjadi 643 juta pada tahun 2030 Perubahan gaya hidup modern diperkirakan akan menyebabkan peningkatan ini terus berlanjut. Penyakit ini tidak hanya memengaruhi kualitas hidup penderita, tetapi juga menimbulkan tantangan yang signifikan bagi sistem kesehatan, terutama jika tidak ditemukan sejak awal. Salah satu masalah utama dalam pengobatan diabetes adalah diagnosis yang terlambat. Banyak penderita diabetes baru mengetahui bahwa mereka memiliki komplikasi serius. Akibatnya, sangat penting untuk mendeteksi diabetes sejak dini. M
+Dalam bidang kesehatan, teknologi kecerdasan buatan (AI) dan pembelajaran mesin telah membuka peluang baru, seperti mendeteksi penyakit kronis seperti diabetes.  Teknik ini memungkinkan sistem untuk membuat prediksi secara otomatis yang sangat akurat dan mengidentifikasi pola dalam data medis yang kompleks.  Studi yang dilakukan oleh [An Dinh](https://bmcmedinformdecismak.biomedcentral.com/articles/10.1186/s12911-019-0918-5) menunjukkan bahwa teknik berbasis pembelajaran mesin dapat membantu diagnosis dini berbagai penyakit, seperti diabetes.
 Penelitian ini akan membandingkan beberapa algoritma machine learning konvensional dan algoritma deep learning. Kemudian algoritma terbaik yang dibangun menggunakan base model akan ditingkatkan dengan teknik fine-tunning sesuai dengan algoritma terbaik yang digunakan
 
 
 ## Business Understanding
+
+Diabetes adalah kondisi kronis yang dapat sangat mengganggu kualitas hidup seseorang.  Untuk memastikan bahwa pengobatan atau pencegahan dapat dilakukan segera, deteksi dini sangat penting.  Dalam situasi seperti ini, machine learning dan deep learning sangat potensial untuk membantu memprediksi penyakit diabetes dengan data historis pasien.
+Untuk mencapai tujuan ini, pemahaman yang mendalam tentang masalah yang dihadapi diperlukan, serta pendekatan yang dapat digunakan teknologi untuk menjawab masalah tersebut.
+
 
 Pada bagian ini, kamu perlu menjelaskan proses klarifikasi masalah.
 
