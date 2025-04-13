@@ -12,37 +12,28 @@ Penelitian ini akan membandingkan beberapa algoritma machine learning konvension
 Diabetes adalah kondisi kronis yang dapat sangat mengganggu kualitas hidup seseorang.  Untuk memastikan bahwa pengobatan atau pencegahan dapat dilakukan segera, deteksi dini sangat penting.  Dalam situasi seperti ini, machine learning dan deep learning sangat potensial untuk membantu memprediksi penyakit diabetes dengan data historis pasien.
 Untuk mencapai tujuan ini, pemahaman yang mendalam tentang masalah yang dihadapi diperlukan, serta pendekatan yang dapat digunakan teknologi untuk menjawab masalah tersebut.
 
-
-Pada bagian ini, kamu perlu menjelaskan proses klarifikasi masalah.
-
-Bagian laporan ini mencakup:
-
 ### Problem Statements
+1. Bagaimana membangun model machine learning yang mampu memprediksi apakah seseorang berpotensi menderita diabetes berdasarkan fitur-fitur medis seperti kadar glukosa, tekanan darah, indeks massa tubuh, dan lainnya?
+2. Algoritma mana yang memiliki performa terbaik dalam memprediksi diabetes berdasarkan dataset Pima Indians Diabetes?
+3. Bagaimana meningkatkan performa model prediksi agar dapat menangani ketidakseimbangan data serta meminimalkan kesalahan prediksi pada pasien yang positif diabetes?
+4. Dapatkah model deep learning memberikan performa yang lebih baik dibandingkan model machine learning konvensional dalam mendeteksi diabetes?
 
-Menjelaskan pernyataan masalah latar belakang:
-- Pernyataan Masalah 1
-- Pernyataan Masalah 2
-- Pernyataan Masalah n
 
 ### Goals
 
-Menjelaskan tujuan dari pernyataan masalah:
-- Jawaban pernyataan masalah 1
-- Jawaban pernyataan masalah 2
-- Jawaban pernyataan masalah n
+1. membangun sistem klasifikasi yang menggunakan data pasien untuk memprediksi kemungkinan diabetes.
+2. Memilih model terbaik dengan membandingkan kinerja beberapa algoritma pengajaran mesin, seperti Logistic Regression, Decision Tree, Random Forest, dan K-Nearest Neighbors.
+3. Tuning hyperparameter dan metode evaluasi model untuk meningkatkan akurasi dan recall, terutama untuk mengidentifikasi pasien positif diabetes.
+4. Untuk mengetahui seberapa baik jaringan saraf dalam klasifikasi data medis, gunakan model deep learning dan bandingkan hasilnya dengan model machine learning.
 
-Semua poin di atas harus diuraikan dengan jelas. Anda bebas menuliskan berapa pernyataan masalah dan juga goals yang diinginkan.
-
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Menambahkan bagian “Solution Statement” yang menguraikan cara untuk meraih goals. Bagian ini dibuat dengan ketentuan sebagai berikut: 
-
-    ### Solution statements
-    - Mengajukan 2 atau lebih solution statement. Misalnya, menggunakan dua atau lebih algoritma untuk mencapai solusi yang diinginkan atau melakukan improvement pada baseline model dengan hyperparameter tuning.
-    - Solusi yang diberikan harus dapat terukur dengan metrik evaluasi.
+### Solution statements
+- Mengaplikasikan dan membandingkan berbagai algoritma pembelajaran mesin seperti Logistic Regression, Decision Tree, Random Forest, dan K-Nearest Neighbors pada dataset Pima untuk menentukan model terbaik berdasarkan metrik seperti akurasi, precision, recall, dan skor F1.
+- Untuk meningkatkan hasil prediksi, terutama recall pada kelas pasien positif diabetes, gunakan hyperparameter tuning (seperti menggunakan GridSearchCV) pada model dengan performa terbaik (seperti K-Nearest Neighbors).
+- Untuk menentukan apakah deep learning memberikan keunggulan, arsitektur neural network yang terdiri dari lapisan Dense dan Dropout digunakan. Kemudian, untuk menerapkan model, digunakan metrik yang sama.
+- Menggunakan visualisasi seperti heatmap dan confusion matrix untuk membantu memahami hasil tuning dan mengevaluasi kekuatan dan kelemahan model.
 
 ## Data Understanding
-Paragraf awal bagian ini menjelaskan informasi mengenai data yang Anda gunakan dalam proyek. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
-
+Dalam proyek ini, digunakan dataset Pima Indians Diabetes yang tersedia secara publik melalui [Kaggle](https://www.kaggle.com/datasets/hassnataslam/pima-indians-diabetes-dataset). Dataset ini dikumpulkan oleh National Institute of Diabetes and Digestive and Kidney Diseases dan bertujuan untuk memprediksi apakah seorang pasien menderita diabetes berdasarkan sejumlah pengukuran diagnostik.
 Selanjutnya uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:  
 
 ### Variabel-variabel pada Restaurant UCI dataset adalah sebagai berikut:
