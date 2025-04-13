@@ -33,46 +33,92 @@ Untuk mencapai tujuan ini, pemahaman yang mendalam tentang masalah yang dihadapi
 - Menggunakan visualisasi seperti heatmap dan confusion matrix untuk membantu memahami hasil tuning dan mengevaluasi kekuatan dan kelemahan model.
 
 ## Data Understanding
-Dalam proyek ini, digunakan dataset Pima Indians Diabetes yang tersedia secara publik melalui [Kaggle](https://www.kaggle.com/datasets/hassnataslam/pima-indians-diabetes-dataset). Dataset ini dikumpulkan oleh National Institute of Diabetes and Digestive and Kidney Diseases dan bertujuan untuk memprediksi apakah seorang pasien menderita diabetes berdasarkan sejumlah pengukuran diagnostik.
-Selanjutnya uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:  
+Dalam proyek ini, digunakan dataset Pima Indians Diabetes yang tersedia secara publik melalui [Kaggle](https://www.kaggle.com/datasets/nancyalaswad90/review). Dataset ini dikumpulkan oleh National Institute of Diabetes and Digestive and Kidney Diseases dan bertujuan untuk memprediksi apakah seorang pasien menderita diabetes berdasarkan sejumlah pengukuran diagnostik.
+Dataset ini terdiri dari 768 entri data dengan 8 fitur input dan 1 target output, di mana target Outcome bernilai:
+- 0 jika pasien tidak menderita diabetes, dan
+- 1 jika pasien menderita diabetes.
 
 ### Variabel-variabel pada Restaurant UCI dataset adalah sebagai berikut:
-- accepts : merupakan jenis pembayaran yang diterima pada restoran tertentu.
-- cuisine : merupakan jenis masakan yang disajikan pada restoran.
-- dst
+1. Pregnancies	Jumlah kehamilan yang pernah dialami pasien
+2. Glucose	Kadar glukosa dalam plasma darah
+3. BloodPressure	Tekanan darah diastolik (mm Hg)
+4. SkinThickness	Ketebalan lipatan kulit triceps (mm)
+5. Insulin	Kadar insulin serum 2 jam setelah makan (mu U/ml)
+6. BMI	Indeks massa tubuh (berat badan dalam kg / (tinggi badan dalam m)^2)
+7. DiabetesPedigreeFunction	Fungsi riwayat diabetes secara genetik
+8. Age	Usia pasien (dalam tahun)
+9. Outcome	Label (0 = negatif diabetes, 1 = positif diabetes)
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Melakukan beberapa tahapan yang diperlukan untuk memahami data, contohnya teknik visualisasi data atau exploratory data analysis.
+Selanjutnya untuk melakukan analisis data lanjutan langkah awal yang dilakukan adalah mendefinisikan pertanyaan terlebih dahulu. Pertanyaan yang didefinisikan yaitu:
+1. Berapa banyak entri dalam dataset dan berapa proporsi dari masing-masing nilai Outcome (0 dan 1)?
+2. Bagaimana Korelasi tiap Variabel?
+3. Variabel apa yang memiliki korelasi paling tinggi dengan outcome?
+
+![image](https://github.com/user-attachments/assets/1d446357-16d1-471a-a1b6-ffd353bd37d7) \
+Berdasarkan gambar diatas, sebaran data pasien yang terkena diabetes yaitu 31% dan yang tidak yaitu sebesar 69% dari data yang ada. 
+Kemudian untuk melihat bagaimana korelasi setiap variabel/fitur, maka visualisasi menggunakan heatmap seperti dibawah ini dilakukan.
+![image](https://github.com/user-attachments/assets/c07353bf-a17c-41cd-b4f2-9c50b08f5421) \
+Berdasarkan kedua visualisasi tersebut, didapatkan kesimpulan dan saran sebagai berikut \
+**Kesimpulan**
+1. Variabel yang memiliki korelasi paling tinggi dengan Outcome (Hasil akhir, di mana 1 menunjukkan pasien menderita diabetes dan 0 menunjukkan pasien tidak menderita diabetes) adalah Glucose (kadar gula darah) dalam pasien.
+2. Dan yang memiliki Korelasi paling rendah adalah SkinThickness: Ketebalan lipatan kulit triceps (mm).\
+
+**Saran**
+1. Penting untuk mempertimbangkan apakah SkinThickness akan digunakan atau tidak
+2. Penambahan data dalam dataset bila akurasi yang didapatkan cukup rendah
+
 
 ## Data Preparation
-Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
+Tahapan data preparation sangat penting dalam proses pemodelan, karena kualitas data yang baik akan meningkatkan performa model machine learning dan deep learning yang digunakan. Pada proyek ini, dilakukan beberapa tahapan persiapan data untuk memastikan bahwa dataset layak digunakan dalam proses pelatihan model.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan proses data preparation yang dilakukan
-- Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
+1. Menangani Nilai yang Tidak Logis (Zero Replacement)
+   Beberapa fitur dalam dataset memiliki nilai 0 yang tidak realistis atau secara medis tidak mungkin bernilai nol, seperti pada kolom Glucose, BloodPressure, SkinThickness, Insulin, dan BMI. Nilai nol ini sebenarnya merepresentasikan data yang hilang (missing values) dan perlu ditangani. Mengganti nilai 0 dengan rata-rata (mean) dari kolom masing-masing, kecuali kolom Pregnancies yang secara medis bisa bernilai 0.
+2. Split Data: Training dan Testing
+   Untuk mengevaluasi performa model secara objektif, data dibagi menjadi dua bagian:
+   - 80% data untuk pelatihan (training)
+   - 20% data untuk pengujian (testing)
+   - Stratifikasi digunakan agar distribusi kelas tetap seimbang.
+3. Standarisasi Fitur (Feature Scaling)
+   Beberapa algoritma machine learning seperti K-Nearest Neighbors dan Logistic Regression sensitif terhadap skala fitur. Oleh karena itu, dilakukan standarisasi data agar semua fitur memiliki skala yang seragam. StandardScaler dari sklearn.preprocessing, yang mengubah setiap fitur agar memiliki mean 0 dan standar deviasi 1.
 
 ## Modeling
-Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
+Untuk menyelesaikan permasalahan klasifikasi dalam mendeteksi potensi diabetes, beberapa algoritma machine learning telah digunakan dan dibandingkan performanya. Algoritma yang dipilih meliputi Logistic Regression, Decision Tree, Random Forest, dan K-Nearest Neighbors (KNN). Masing-masing algoritma diuji berdasarkan akurasi, precision, recall, dan f1-score untuk mengetahui model mana yang paling optimal dalam mengklasifikasikan data pasien.
+1. Logistic Regression digunakan sebagai model baseline karena kesederhanaannya dan kemampuannya untuk memberikan interpretasi yang jelas. Namun, model ini kurang mampu menangani hubungan non-linear antara fitur.
+2. Decision Tree menawarkan kemampuan menangkap hubungan kompleks antar fitur tanpa perlu standarisasi data, tetapi rentan terhadap overfitting.
+3. Random Forest digunakan sebagai metode ensemble yang menggabungkan banyak pohon keputusan, sehingga lebih stabil dan mampu memberikan performa lebih baik dari Decision Tree tunggal.
+4. K-Nearest Neighbors (KNN) merupakan algoritma berbasis jarak yang sederhana namun sangat bergantung pada pemilihan parameter dan preprocessing, terutama scaling.
+5. Model Deep learning juga digunakan untuk melihat apakah akan memiliki perbedaan yang signifikan. Model deeplearning yang digunakan, menggunakan arsitektur seperti gambar dibawah.\
+![image](https://github.com/user-attachments/assets/8f40cde2-3c7b-4fb0-80cb-2d390f74fbb1)
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan kelebihan dan kekurangan dari setiap algoritma yang digunakan.
-- Jika menggunakan satu algoritma pada solution statement, lakukan proses improvement terhadap model dengan hyperparameter tuning. **Jelaskan proses improvement yang dilakukan**.
-- Jika menggunakan dua atau lebih algoritma pada solution statement, maka pilih model terbaik sebagai solusi. **Jelaskan mengapa memilih model tersebut sebagai model terbaik**.
 
+ 
 ## Evaluation
-Pada bagian ini anda perlu menyebutkan metrik evaluasi yang digunakan. Lalu anda perlu menjelaskan hasil proyek berdasarkan metrik evaluasi yang digunakan.
+ Metrik Evaluasi yang digunakan untuk melihat performa dari tiap model yaitu Confusion matrix. [Confusion matrix](https://ieeexplore.ieee.org/document/10396931) adalah informasi yang disimpan dalam bentuk matriks untuk mengetahui performansi model Machine learning maupun Deep learning yang dipakai, dan dapat digunakan sebagai tumpuan dari performansi klasifikasi algoritma yang dipakai pada tahap evaluasi. Confusion matrix merupakan sebuah pengukuran performa yang sering digunakan pada masalah klasifikasi di mana output dapat terdiri dari dua kelas atau lebih. Terdapat empat atribut yang merupakan kombinasi dari nilai yang diprediksi (predicted) dan nilai yang sebenarnya (actual) yaitu True Positif (TP), True Negatif (TN), False Positif (FP), dan False Negatif (FN).
+1. Accuracy, menggambarkan akurasi dari sebuah model dalam mengklasifikasikan dengan benar.\
+   Accuracy =(TP+TN)/(TP+TN+FP+FN) 					
+2. Precision, memberitahu seberapa banyak sampel positif yang diprediksi secara benar untuk semua sampel yang diprediksi positif.\
+   Precision=TP/(TP+FP) 						
+3. Recall, memberitahu seberapa banyak sampel yang diprediksi secara benar untuk semua sampel nilai aktual yang positif.\
+    Recall=TP/(TP+FN) 			
+4. F1-score merupakan hasil kombinasi dari rumus precision dan recall. Nilai F1-score adalah nilai rata-rata dari precision dan recall yang memiliki sebuah nilai maksimal ketika precision dan recall setara.\
+    F1-score = 2 ((Precision*Recall)/(Precision+Recall))
 
-Sebagai contoh, Anda memiih kasus klasifikasi dan menggunakan metrik **akurasi, precision, recall, dan F1 score**. Jelaskan mengenai beberapa hal berikut:
-- Penjelasan mengenai metrik yang digunakan
-- Menjelaskan hasil proyek berdasarkan metrik evaluasi
+Hasil  perbandingan setiap model bisa dilihat pada gambar berikut\
+![image](https://github.com/user-attachments/assets/08de89e7-f41c-4844-804d-c90e822aea5c)
 
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
+Berdasarkan hasil evaluasi, model KNN menunjukkan performa terbaik dengan akurasi sekitar 78%. Model ini sangat baik dalam mendeteksi pasien tanpa diabetes (class 0), namun performanya dalam mendeteksi pasien yang positif diabetes (class 1) masih bisa ditingkatkan. Oleh karena itu, dilakukan proses hyperparameter tuning menggunakan GridSearchCV untuk mengoptimalkan parameter seperti n_neighbors, weights, dan metric. Hasil tuning menunjukkan bahwa pengaturan parameter yang optimal mampu meningkatkan nilai recall dan f1-score untuk class 1, yang sangat penting dalam konteks medis agar model tidak melewatkan pasien yang berpotensi terkena diabetes. Hasil tunning bisa dilihat pada gambar dibawah ini.\
+![image](https://github.com/user-attachments/assets/e5efcbf9-bda8-4e9d-8ac8-296e7ed999c9)
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
+Proses tuning juga divisualisasikan untuk menunjukkan bagaimana perubahan jumlah tetangga (n_neighbors) memengaruhi akurasi model. Hasil tuning ini menghasilkan model KNN yang lebih seimbang dan dapat diandalkan dalam konteks klasifikasi biner untuk diagnosis awal diabetes. Dengan mempertimbangkan keseimbangan metrik, kemudahan implementasi, dan performa setelah tuning, maka model K-Nearest Neighbors dipilih sebagai model terbaik dalam proyek ini. Proses tunning pemilihan parameter terbaik dapat dilihat pada gambar berikut\
+![image](https://github.com/user-attachments/assets/329afcc1-cc46-4533-85ec-1bd89a098587)
 
-**---Ini adalah bagian akhir laporan---**
+Selain menggunakan model machine learning konvensional, proyek ini juga mengimplementasikan pendekatan deep learning sebagai pembanding untuk melihat sejauh mana peningkatan performa dapat dicapai dengan arsitektur jaringan saraf yang lebih kompleks. Model deep learning yang digunakan adalah model feedforward neural network (FNN) yang terdiri dari beberapa lapisan tersembunyi (hidden layers) dan telah dilengkapi dengan teknik regularisasi untuk menghindari overfitting. Arsitektur model terdiri dari tiga lapisan tersembunyi: layer pertama dengan 128 neuron, layer kedua dengan 64 neuron, dan layer ketiga dengan 32 neuron, semuanya menggunakan fungsi aktivasi ReLU. Untuk output, digunakan satu neuron dengan fungsi aktivasi sigmoid karena permasalahan bersifat klasifikasi biner. Model ini juga dilengkapi dengan dropout layer sebesar 0.3 dan 0.2 di antara lapisan-lapisan tersembunyi sebagai upaya untuk mengurangi overfitting.
 
-_Catatan:_
-- _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
-- Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.
+Model ini dilatih menggunakan binary cross-entropy sebagai loss function dan optimasi menggunakan Adam optimizer. Selama proses training, model dipantau berdasarkan akurasi dan loss pada data training dan validation set. Hasil pelatihan menunjukkan bahwa meskipun akurasi model relatif tinggi, terdapat indikasi awal overfitting—dimana model memiliki performa sangat baik pada data pelatihan namun tidak terlalu baik dalam generalisasi ke data uji. Hal ini merupakan salah satu kelemahan umum dari deep learning ketika digunakan pada dataset yang relatif kecil seperti dataset Pima Indian Diabetes, yang hanya memiliki sekitar 768 data.
+
+Kelebihan dari model deep learning adalah kemampuannya untuk menangkap hubungan non-linear dan kompleks antar fitur secara otomatis tanpa perlu rekayasa fitur eksplisit. Selain itu, model ini juga fleksibel dan dapat ditingkatkan skalanya dengan menambahkan lebih banyak lapisan atau unit neuron jika tersedia data dalam jumlah besar. Namun, kelemahannya adalah membutuhkan lebih banyak waktu pelatihan, sumber daya komputasi yang lebih tinggi, serta lebih rentan terhadap overfitting terutama jika data tidak cukup besar atau tidak dilakukan regularisasi dengan baik.
+
+hasil dari model deep learning itu sendiri bisa dilihat pada gambar dibawah ini. Penggunaan model deep learninh hanya mendapat akurasi sebesar 75%, dalam konteks proyek ini model K-Nearest Neighbors (KNN) tetap menjadi model terbaik berdasarkan keseimbangan performa, kesederhanaan, dan interpretabilitas. Namun demikian, pendekatan deep learning tetap menjadi alternatif yang menjanjikan, khususnya jika di masa depan tersedia dataset yang lebih besar dan beragam.\
+![image](https://github.com/user-attachments/assets/147d39bd-1b7e-42f3-83c5-b138c7ed9589)
+
+
