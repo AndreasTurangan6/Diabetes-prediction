@@ -1,14 +1,11 @@
 # Laporan Proyek Machine Learning - ANDREAS DWI PUTRA TURANGAN
 
-## Domain Proyek
+## Prediksi Diabetes (Kesehatan)
 
-Pada bagian ini, kamu perlu menuliskan latar belakang yang relevan dengan proyek yang diangkat.
+Karena jumlah penderita diabetes mellitus yang terus meningkat setiap tahunnya, diabetes mellitus adalah salah satu penyakit kronis yang menjadi perhatian global. [World Health Organization (WHO)](https://www.who.int/health-topics/diabetes#tab=tab_1) melaporkan bahwa prevalensi diabetes telah meningkat secara global. Perubahan gaya hidup modern diperkirakan akan menyebabkan peningkatan ini terus berlanjut. Penyakit ini tidak hanya memengaruhi kualitas hidup penderita, tetapi juga menimbulkan tantangan yang signifikan bagi sistem kesehatan, terutama jika tidak ditemukan sejak awal. Salah satu masalah utama dalam pengobatan diabetes adalah diagnosis yang terlambat. Banyak penderita diabetes baru mengetahui bahwa mereka memiliki komplikasi serius. Akibatnya, sangat penting untuk mendeteksi diabetes sejak dini. 
+Metode pembelajaran mesin telah banyak digunakan untuk prediksi penyakit, termasuk diabetes, berkat kemajuan teknologi, khususnya AI. Sistem dapat mengenali pola yang sulit dilihat oleh manusia dan membuat prediksi yang cukup akurat dengan menggunakan data historis pasien dan algoritma pembelajaran mesin.
+Penelitian ini akan membandingkan beberapa algoritma machine learning konvensional dan algoritma deep learning. Kemudian algoritma terbaik yang dibangun menggunakan base model akan ditingkatkan dengan teknik fine-tunning sesuai dengan algoritma terbaik yang digunakan
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Jelaskan mengapa dan bagaimana masalah tersebut harus diselesaikan
-- Menyertakan hasil riset terkait atau referensi. Referensi yang diberikan harus berasal dari sumber yang kredibel dan author yang jelas.
-  
-  Format Referensi: [Judul Referensi](https://scholar.google.com/) 
 
 ## Business Understanding
 
